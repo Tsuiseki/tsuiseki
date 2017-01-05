@@ -1,0 +1,6 @@
+[submodule "common"]
+	path = common
+	url = git@github.com:Tsuiseki/common.git
+[submodule "api"]
+	path = api
+	url = git@github.com:Tsuiseki/api.git
