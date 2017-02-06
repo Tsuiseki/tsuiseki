@@ -6,11 +6,18 @@ services:
       - db
     ports:
       - 8000:8000
-    volumes: 
+    volumes:
       - ./api:/opt/app
-    environment: 
+    environment:
       - PORT=8000
       - MONGO_URL=mongodb://db:27017/tsuiseki
+    command: sh -c "cd /opt/app && yarn start"
+  frontend:
+    image: asermax/node-yarn
+    ports:
+      - 8080:8080
+    volumes:
+      - ./frontend:/opt/app
     command: sh -c "cd /opt/app && yarn start"
   db:
     image: mongo:3.4
