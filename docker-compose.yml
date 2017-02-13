@@ -16,7 +16,7 @@ services:
     volumes:
       - ./api:/opt/app
     environment:
-      - PORT=8000
+      - PORT=80
       - MONGO_URL=mongodb://db:27017/tsuiseki
     command: sh -c "cd /opt/app && yarn start"
   frontend:
