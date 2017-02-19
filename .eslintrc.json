@@ -1,0 +1,19 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "semi": ["error", "never"],
+        "no-trailing-spaces": "error",
+        "space-before-function-paren": "error",
+        "object-shorthand": "error",
+        "object-curly-spacing": ["error", "always"],
+        "array-bracket-spacing": ["error", "always"],
+        "curly": "error",
+        "comma-dangle": ["error", "always-multiline"]
+    }
+}
