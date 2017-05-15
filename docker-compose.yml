@@ -8,16 +8,24 @@ services:
     ports:
       - 80:80
     volumes: 
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.template:ro
+      - ./media:/www/media
+    environment:
+      - STORAGE_PATH=/www/media
+      - MEDIA_PREFIX=/media
+    command: sh -c "envsubst '$${STORAGE_PATH},$${MEDIA_PREFIX}' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
   api:
     image: asermax/node-yarn
     links:
       - db
     volumes:
       - ./api:/opt/app
+      - ./media:/opt/media
     environment:
       - PORT=80
       - MONGO_URL=mongodb://db:27017/tsuiseki
+      - STORAGE_PATH=/opt/media
+      - MEDIA_PREFIX=/media
     command: sh -c "cd /opt/app && yarn start"
   frontend:
     image: asermax/node-yarn
